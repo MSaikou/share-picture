@@ -1,0 +1,12 @@
+<div class="face-snap-card">
+    <h2> {{ faceSnap.title }} </h2>
+    <img [ngSrc]="faceSnap.imageSrc" [alt]="faceSnap.title" height="400" width="500" />
+    <p> {{ faceSnap.description }} </p>
+    <p> Mise en ligne {{ faceSnap.createdAt }} </p>
+    <p>
+        <button (click)="onSnap()">
+           {{ snappButton }}
+        </button>
+        👍🏾 {{ faceSnap.snaps }}
+    </p>
+</div>
