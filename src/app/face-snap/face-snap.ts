@@ -1,4 +1,3 @@
-import { NgOptimizedImage } from '@angular/common';
 import { Component, Input, OnInit, input } from '@angular/core';
 import { FaceSnapModel } from '../models/face-snap';
 
@@ -10,8 +9,6 @@ import { FaceSnapModel } from '../models/face-snap';
   styleUrl: './face-snap.scss',
 })
 export class FaceSnap implements OnInit {
-  
-  //@Input() faceSnap!: FaceSnapModel;
 
   faceSnap = input<FaceSnapModel>();
 
