@@ -1,18 +1,18 @@
 <div class="face-snap-card">
-    <h2> {{ faceSnap.title }} </h2>
-    @if(faceSnap.location){
-        <p> Localisation : {{ faceSnap.location }} </p>
+    <h2> {{ faceSnap()?.title }} </h2>
+    @if(faceSnap()?.location){
+    <p> Localisation : {{ faceSnap()?.location }} </p>
     } @else {
-        <p> Location non specifie </p>
+    <p> Location non specifie </p>
     }
-    <img [ngSrc]="faceSnap.imageSrc" [alt]="faceSnap.title" height="400" width="500" />
-    <p> {{ faceSnap.description }} </p>
-    <p> Mise en ligne {{ faceSnap.createdAt }} </p>
+    <img [src]="faceSnap()?.imageSrc" [alt]="faceSnap()?.title" height="400" width="500" />
+    <p> {{ faceSnap()?.description }} </p>
+    <p> Mise en ligne {{ faceSnap()?.createdAt }} </p>
     <p>
         <button (click)="onSnap()">
-           {{ snappButton }}
+            {{ snappButton }}
         </button>
-        👍🏾 {{ faceSnap.snaps }}
+        👍🏾 {{ faceSnap()?.snaps }}
     </p>
-  
+
 </div>

@@ -1,17 +1,19 @@
 import { NgOptimizedImage } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, input } from '@angular/core';
 import { FaceSnapModel } from '../models/face-snap';
 
 @Component({
   selector: 'app-face-snap',
   standalone:true,
-  imports: [NgOptimizedImage],
+  imports: [],
   templateUrl: './face-snap.html',
   styleUrl: './face-snap.scss',
 })
 export class FaceSnap implements OnInit {
   
-  @Input() faceSnap!: FaceSnapModel;
+  //@Input() faceSnap!: FaceSnapModel;
+
+  faceSnap = input<FaceSnapModel>();
 
   snappButton = 'Oh snap'
   userSnapped = true;
@@ -28,13 +30,13 @@ export class FaceSnap implements OnInit {
   }
   
   unSnap() {
-    this.faceSnap.addSnap();
+    this.faceSnap()?.addSnap();
     this.snappButton = "Oh snap";
     this.userSnapped = false;
   }
 
   snap(): void {
-    this.faceSnap.removeSnaps();
+    this.faceSnap()?.removeSnaps();
     this.snappButton = "Oooh unSnap";
     this.userSnapped = true;
   }
