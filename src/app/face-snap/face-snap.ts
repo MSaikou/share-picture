@@ -1,4 +1,3 @@
-import { NgOptimizedImage } from '@angular/common';
 import { Component, Input, OnInit, input } from '@angular/core';
 import { FaceSnapModel } from '../models/face-snap';
 
