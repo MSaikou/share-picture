@@ -1,4 +1,7 @@
 export class FaceSnapModel{
+
+    location?: string;
+
     constructor(
         public title: string,
         public description: string,
@@ -14,4 +17,8 @@ export class FaceSnapModel{
     removeSnaps():void {
         this.snaps--;
     } 
+
+    setLocation(location: string): void {
+        this.location = location;
+    }
 }
