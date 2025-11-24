@@ -1,18 +1,18 @@
 import { Component, Input, OnInit, input } from '@angular/core';
 import { FaceSnapModel } from '../models/face-snap';
-import { NgStyle } from '@angular/common';
+import { NgClass, NgStyle } from '@angular/common';
 
 @Component({
   selector: 'app-face-snap',
   standalone:true,
-  imports: [NgStyle],
+  imports: [NgStyle, NgClass],
   templateUrl: './face-snap.html',
   styleUrl: './face-snap.scss',
 })
 export class FaceSnap implements OnInit {
 
   faceSnap = input<FaceSnapModel>();
-
+  
   snappButton = 'Oh snap'
   userSnapped = true;
   
