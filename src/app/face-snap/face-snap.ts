@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, input } from '@angular/core';
+import { Component, input, signal } from '@angular/core';
 import { FaceSnapModel } from '../models/face-snap';
 import { NgClass, NgStyle } from '@angular/common';
 
@@ -9,18 +9,15 @@ import { NgClass, NgStyle } from '@angular/common';
   templateUrl: './face-snap.html',
   styleUrl: './face-snap.scss',
 })
-export class FaceSnap implements OnInit {
+export class FaceSnap {
 
   faceSnap = input<FaceSnapModel>();
   
-  snappButton = 'Oh snap'
-  userSnapped = true;
-  
-  ngOnInit(): void {
-  }
+  snappButton = signal<string>('Oh snap');
+  userSnapped = signal<boolean>(true);
 
   onSnap(): void {
-    if(this.userSnapped){
+    if(this.userSnapped()){
       this.unSnap();
     }else{
       this.snap();
@@ -29,14 +26,14 @@ export class FaceSnap implements OnInit {
   
   unSnap() {
     this.faceSnap()?.addSnap();
-    this.snappButton = "Oh snap";
-    this.userSnapped = false;
+    this.snappButton.update(titre => titre='Oh snap');
+    this.userSnapped.update(etat => etat=false);
   }
 
   snap(): void {
     this.faceSnap()?.removeSnaps();
-    this.snappButton = "Oooh unSnap";
-    this.userSnapped = true;
+    this.snappButton.update(titre => titre='Oooh unSnap');
+    this.userSnapped.update(etat => etat=true);
   }
 
 }

@@ -10,7 +10,7 @@
     <p> Mise en ligne {{ faceSnap()?.createdAt }} </p>
     <p>
         <button (click)="onSnap()">
-            {{ snappButton }}
+            {{ snappButton() }}
         </button>
         <span [ngStyle]="{ color: 'rgb(0, ' + faceSnap()?.snaps + ', 0)' }">🤌 {{ faceSnap()?.snaps }}</span>
     </p>
