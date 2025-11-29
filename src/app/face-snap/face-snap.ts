@@ -14,7 +14,7 @@ export class FaceSnap {
   faceSnap = input<FaceSnapModel>();
   
   snappButton = signal<string>('Oh snap');
-  userSnapped = signal<boolean>(true);
+  userSnapped = signal<boolean>(false);
 
   onSnap(): void {
     if(this.userSnapped()){
