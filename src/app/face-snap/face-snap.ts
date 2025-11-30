@@ -1,6 +1,7 @@
-import { Component, input, signal } from '@angular/core';
+import { Component, inject, input, signal } from '@angular/core';
 import { FaceSnapModel } from '../models/face-snap';
 import { NgClass, NgStyle } from '@angular/common';
+import { FaceSnapeService } from '../services/face-snap.service';
 
 @Component({
   selector: 'app-face-snap',
@@ -16,6 +17,8 @@ export class FaceSnap {
   snappButton = signal<string>('Oh snap');
   userSnapped = signal<boolean>(false);
 
+  private readonly facesnapService = inject(FaceSnapeService);
+
   onSnap(): void {
     if(this.userSnapped()){
       this.unSnap();
@@ -25,13 +28,13 @@ export class FaceSnap {
   }
   
   unSnap() {
-    this.faceSnap()?.addSnap();
+    this.facesnapService.snapFaceById(this.faceSnap()!!.id, 'unsnap');
     this.snappButton.update(titre => titre='Oh snap');
     this.userSnapped.update(etat => etat=false);
   }
 
   snap(): void {
-    this.faceSnap()?.removeSnaps();
+    this.facesnapService.snapFaceById(this.faceSnap()!!.id, 'snap');
     this.snappButton.update(titre => titre='Oooh unSnap');
     this.userSnapped.update(etat => etat=true);
   }
